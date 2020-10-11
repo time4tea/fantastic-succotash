@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test
 
 class HelloWorldTest {
 
-    val handler: HttpHandler = { Response(Status.OK).body("Hello, World!") }
-
     @Test
     fun `invoking says hello`() {
+        val server = HelloHandler()
+
         assertThat(
-            handler(Request(Method.GET, Uri.of("http://localhost/hello-world"))),
+            server(Request(Method.GET, Uri.of("http://localhost/hello-world"))),
             allOf(
                 hasStatus(Status.OK),
                 hasBody("Hello, World!")

@@ -12,13 +12,17 @@ repositories {
 ext {
     http4k_version = "3.266.0"
     junit_version = "5.3.1"
+    slf4j_version = '1.7.30'
 }
 
 dependencies {
 
     implementation platform(group: "org.http4k", name:"http4k-bom", version: http4k_version)
     implementation group:"org.http4k", name:"http4k-core"
+    implementation "org.http4k:http4k-server-undertow"
 
+
+    implementation group: 'org.slf4j', name: 'slf4j-nop', version: slf4j_version
 
     testImplementation group: "org.http4k", name: "http4k-testing-hamkrest"
 
